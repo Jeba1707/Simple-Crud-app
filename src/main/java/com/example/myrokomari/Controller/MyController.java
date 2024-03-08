@@ -16,6 +16,15 @@ public class MyController { private List<Book> books = new ArrayList<Book>();
         return books;
     }
 
+    //localhost:8090/my-rokomari/search-book/104
+    @GetMapping("/search-book/{id}")
+    public Book getBook(@PathVariable int id) {
+        for (Book book : books) {
+            if (book.getId() == id)
+              return book;
+        } return null;
+    }
+
     //localhost:8090/my-rokomari/add-book
     @PostMapping("/add-book")
     public Book addbook(@RequestBody Book book){
