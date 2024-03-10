@@ -1,4 +1,4 @@
-package com.example.myrokomari.DTO;
+package com.example.myrokomari.Domain;
 
 public class Book {
     private int id ;
