@@ -1,11 +1,10 @@
 package com.example.myrokomari.Controller;
 
-import com.example.myrokomari.Domain.Book;
+import com.example.myrokomari.Entities.Book;
 import com.example.myrokomari.Services.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -17,7 +16,7 @@ public class MyController {
 //localhost:8090/my-rokomari/book-list
 @GetMapping("/book-list")
     public List<Book> bookList(){
-        return bookService.bookList();
+        return bookService.getBooks();
     }
 
     //localhost:8090/my-rokomari/search-book/104
@@ -29,21 +28,20 @@ public class MyController {
     //localhost:8090/my-rokomari/add-book
     @PostMapping("/add-book")
     public Book addbook(@RequestBody Book book){
-        return bookService.addbook(book);
+        return bookService.addBook(book);
     }
 
 
     //localhost:8090/my-rokomari/delete-book/103
     @DeleteMapping("/delete-book/{id}")
-    public String deleteBook(@PathVariable int id){
-        return bookService.deleteBook(id);
+    public void deleteBook(@PathVariable int id){
+        bookService.deleteBook(id);
     }
 
 
     //localhost:8090/my-rokomari/update-book?id=104
     @PutMapping("/update-book")
     public String updateBook(@RequestParam("id") int id, @RequestBody Book b){
-
         return bookService.updateBook(id,b);
     }
 //     An example of a JSON
